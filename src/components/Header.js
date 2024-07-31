@@ -7,23 +7,13 @@ import my_photo from "./images/myphto(1).png";
 import mic_icon from "./images/mic_icon.svg";
 import { useDispatch } from "react-redux";
 import { toggleMenuOpen } from "../utils/menuOpenSlice";
-import { YOUTUBE_API_SEARCH_URL } from "../utils/constants";
+import { Link } from "react-router-dom";
 
 const Header = () => {
 
   const dispatch = useDispatch();
 
   const [inputValue,setInputValue] = useState('');
-
-  // useEffect(()=>{
-  //     searchSuggestionFunction()
-  // },[inputValue]);
-
-  // const searchSuggestionFunction = async () => {
-  //       const data = await fetch(YOUTUBE_API_SEARCH_URL + inputValue);
-  //       const jsonData = await data.json();
-  //       console.log(jsonData)
-  // }
 
   const handleHamberClick = () => {
     dispatch(toggleMenuOpen());
@@ -32,7 +22,7 @@ const Header = () => {
   return (
     <div className="fixed top-0 left-0 w-full z-10 bg-white">
       <div className="flex justify-between px-6 py-6 items-center">
-        <div className="flex gap-7">
+        <div className="flex gap-7 items-center">
           <button className="px-2 py-2 hover:bg-gray-200 rounded-full">
           <img
             src={hamberger}
@@ -41,11 +31,13 @@ const Header = () => {
             alt="hamberger_icon"
           />
           </button>
-          <img
-            src={youtube_icon}
-            className="h-7 cursor-pointer"
-            alt="youtube_icon"
-          />
+          <Link to="/">
+            <img
+              src={youtube_icon}
+              className="h-7 cursor-pointer"
+              alt="youtube_icon"
+            />
+          </Link>
         </div>
         <div className="flex items-center w-2/4">
           <input

@@ -3,6 +3,7 @@ import { YOUTUBE_URL } from '../utils/constants';
 import VideoCard from './VideoCard';
 import { Link } from 'react-router-dom';
 import RecommendVideos from './RecommendVideos';
+import Shimmer from './Shimmer';
 
 const VideoContainer = ({ isRecommendTrue }) => {
   const [videos, setVideos] = useState([]);
@@ -36,11 +37,11 @@ const VideoContainer = ({ isRecommendTrue }) => {
                   <VideoCard videosData={video} />
                 </Link>
               )}
-            </div>
+            </div> 
           ))}
         </div>
       ) : (
-        <p>Loading...</p>
+        <Shimmer/>
       )}
     </div>
   );
