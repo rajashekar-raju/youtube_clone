@@ -5,11 +5,12 @@ import { toggleMenuOpen } from "../utils/menuOpenSlice";
 import { useDispatch } from "react-redux";
 import VideoDetails from "./VideoDetails";
 import VideoContainer from "./VideoContainer"; // Import VideoContainer to use for recommended videos
+import CommentsContainer from "./CommentsContainer";
 
 const WatchPage = () => {
   const [videoDetails, setVideoDetails] = useState(null);
 
-  const { videoId } = useParams();
+  const {videoId} = useParams();
 
   const dispatch = useDispatch();
 
@@ -40,6 +41,7 @@ const WatchPage = () => {
           className="rounded-xl ml-10"
         ></iframe>
         <div>{videoDetails?.items?.length > 0 && <VideoDetails details={videoDetails} />}</div>
+        <CommentsContainer videoId={videoId}/>
       </div>
       <div>
         <VideoContainer isRecommendTrue={true} /> {/* Use VideoContainer for recommended videos */}

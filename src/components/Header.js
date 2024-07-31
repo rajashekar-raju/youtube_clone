@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import hamberger from "./images/hamerger_icon.svg";
 import youtube_icon from "./images/youtube_logo.svg";
 import search_icon from "./images/search_icon.svg";
@@ -7,10 +7,23 @@ import my_photo from "./images/myphto(1).png";
 import mic_icon from "./images/mic_icon.svg";
 import { useDispatch } from "react-redux";
 import { toggleMenuOpen } from "../utils/menuOpenSlice";
+import { YOUTUBE_API_SEARCH_URL } from "../utils/constants";
 
 const Header = () => {
 
   const dispatch = useDispatch();
+
+  const [inputValue,setInputValue] = useState('');
+
+  // useEffect(()=>{
+  //     searchSuggestionFunction()
+  // },[inputValue]);
+
+  // const searchSuggestionFunction = async () => {
+  //       const data = await fetch(YOUTUBE_API_SEARCH_URL + inputValue);
+  //       const jsonData = await data.json();
+  //       console.log(jsonData)
+  // }
 
   const handleHamberClick = () => {
     dispatch(toggleMenuOpen());
@@ -37,8 +50,10 @@ const Header = () => {
         <div className="flex items-center w-2/4">
           <input
             type="text"
-            placeholder="search"
+            placeholder="Search"
             className="w-[80%] px-5 py-2 rounded-l-full border border-gray-300 focus:outline-none focus:border-gray-600"
+            value={inputValue}
+            onChange={(e)=>setInputValue(e.target.value)}
           />
           <button className="bg-gray-200 py-2 px-5 rounded-r-full">
             <img src={search_icon} className="h-7" alt="search_icon" />

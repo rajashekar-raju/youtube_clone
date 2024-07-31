@@ -30,7 +30,7 @@ const VideoDetails = ({ details }) => {
           </div>
           <div className="col-span-2">
             <button className="bg-black text-white rounded-full py-2 px-4">
-              Subscribe
+              Subscribe 
             </button>
           </div>
         </div>
